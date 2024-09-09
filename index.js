@@ -1,28 +1,17 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+      const panels = document.querySelectorAll('.panel');
+      panels.forEach(panel => {
+          panel.addEventListener('click', () => {
+              removeActiveClasses();
+              panel.classList.add('active');
+          });
+      });
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
-
-
-const panels = document.querySelectorAll('.cards');
-
-panels.forEach(panel => {
-    panel.addEventListener('click', () => {
-        removeActiveClasses();
-        panel.classList.add('active');
-    });
-});
-
-
-function removeActiveClasses() {
-  panels.forEach(panel => {
-      panel.classList.remove('active');
+      function removeActiveClasses() {
+          panels.forEach(panel => {
+              panel.classList.remove('active');
+          });
+      }
   });
 }
